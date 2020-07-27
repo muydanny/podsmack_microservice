@@ -9,6 +9,7 @@ gem 'fast_jsonapi'
 gem 'thin'
 gem 'dotenv'
 
+
 group :test do 
   gem 'rspec'
 end
