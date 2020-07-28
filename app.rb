@@ -2,18 +2,14 @@ require 'sinatra'
 require 'faraday'
 require 'dotenv/load'
 require 'pry'
-require './services/podcast_results_service.rb'
+require './poro/podcast_results_cleaner.rb'
 Dotenv.load
 
 class PodcastMicroService < Sinatra::Base
 
 
-  get '/podcast/:podcast_id' do 
-    podcast_service = PodcastResultsService.new 
-    r = podcast_service.podcast(params[:podcast_id])
-    require 'pry'; binding.pry
+  get '/podcast/:podcast_id' do
+    podcast_cleaner = PodcastResultsCleaner.new
+    podcast_cleaner.get_podcast(params[:podcast_id])
   end
-
-
 end
-
