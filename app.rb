@@ -2,20 +2,18 @@ require 'sinatra'
 require 'faraday'
 require 'dotenv/load'
 require 'pry'
+require './services/podcast_results_service.rb'
+Dotenv.load
 
-get '/podcast' do 
-  r = get_json("/podcasts/:podcast_id")
-  require 'pry'; binding.pry
-end
+class PodcastMicroService < Sinatra::Base
 
 
-def conn 
-  Faraday.new("https://www.listennotes.com/api/v2") do |faraday|
-    faraday.params['X-ListenAPI-Key'] = ENV["LISTEN_API"]
+  get '/podcast/:podcast_id' do 
+    podcast_service = PodcastResultsService.new 
+    r = podcast_service.podcast(params[:podcast_id])
+    require 'pry'; binding.pry
   end
+
+
 end
 
-def get_json(url)
-  response = conn.get(url)
-  JSON.parse(response.body, symbolize_names: true)
-end
