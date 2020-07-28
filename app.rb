@@ -10,6 +10,6 @@ class PodcastMicroService < Sinatra::Base
 
   get '/podcast/:podcast_id' do
     podcast_cleaner = PodcastResultsCleaner.new
-    x = podcast_cleaner.get_podcast(params[:podcast_id])
+    podcast_cleaner.get_podcast(params[:podcast_id])
   end
 end
