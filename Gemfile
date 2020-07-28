@@ -9,7 +9,7 @@ gem 'fast_jsonapi'
 gem 'thin'
 gem 'dotenv'
 gem 'rack'
-
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :test do 
