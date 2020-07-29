@@ -7,7 +7,7 @@ Dotenv.load
 class PodcastResultsService
 
   def search_results(search_param)
-    get_json("/search?q=#{search_param}&type=podcasts")
+    get_json("/search?q=#{search_param}&type=podcasts&only_in=title")
   end
 
   def podcast(podcast_id)
