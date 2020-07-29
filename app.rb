@@ -13,4 +13,9 @@ class PodcastMicroService < Sinatra::Base
     podcast_cleaner = PodcastResultsCleaner.new
     JSON podcast_cleaner.get_podcast(params[:podcast_id])
   end
+
+  get '/podcast/find' do
+    binding.pry
+    podcasts_cleaner = PodcastResultsCleaner.new
+  end
 end

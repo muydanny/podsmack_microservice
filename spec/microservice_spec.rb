@@ -18,4 +18,8 @@ RSpec.describe do
     expect(podcast[:data][:explicit_content]).to eq(false)
     expect(podcast[:data][:episodes].length).to eq(10)
   end
+
+  it 'can search for a podcast' do
+    get '/podcast/find?name=conan'
+  end
 end
