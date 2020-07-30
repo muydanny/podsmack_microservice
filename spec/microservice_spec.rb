@@ -18,4 +18,13 @@ RSpec.describe do
     expect(podcast[:data][:explicit_content]).to eq(false)
     expect(podcast[:data][:episodes].length).to eq(10)
   end
+
+  it 'can search for a podcast' do
+    get '/search?podcast_name=conan'
+    expect(last_response).to be_successful
+    results = JSON.parse(last_response.body, symbolize_names: true)
+    expect(results[:data][:results]).to_not be_empty
+    expect(results[:data][:results].length).to eq(10)
+    expect(results[:data][:results][0][:title]).to eq('Conan O’Brien Needs A Friend')
+  end
 end
